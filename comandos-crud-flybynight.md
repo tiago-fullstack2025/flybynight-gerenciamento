@@ -108,8 +108,27 @@ WHERE preco > 1000;
 
 -- Exibir somente o nome e a descrição dos produtos do
 -- fornecedor Livraria Demais da Conta
+
+-- Versão 1: só considera a tabela produtos
 SELECT nome, descricao, fornecedor_id FROM produtos
 WHERE fornecedor_id = 4;
+
+-- Versão 2: usamos uma JUNÇÃO de tabelas (produtos e fornecedores)
+-- O objetivo é conseguir trazer/exibir TAMBÉM o nome do FORNECEDOR
+SELECT 
+-- nomes das colunas/campos precedidos do nome das tabelas correspondentes
+    produtos.nome, 
+    produtos.descricao, 
+    fornecedores.nome
+
+-- indicando as tabelas que serão "juntadas/combinadas/relacionadas"    
+FROM produtos JOIN fornecedores
+
+-- Regra de junção baseada nas chaves (estrangeira e primária)
+ON produtos.fornecedor_id = fornecedores.id
+
+-- Condição pra essa consulta (produtos do fornecedor Livraria)
+WHERE produtos.fornecedor_id = 4; -- OU fornecedor.id = 4
 ```
 
 
