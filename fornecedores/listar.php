@@ -20,7 +20,7 @@ $fornecedores = buscarFornecedores($conexao);
 </head>
 <body>
     <h1>Fornecedores</h1>
-    <a href="">+ Novo fornecedor</a>
+    <a href="inserir.php">+ Novo fornecedor</a>
     <a href="../index.php">← Voltar</a>
 
     <!-- Estruturando uma tabela HTML para exibir os dados -->
