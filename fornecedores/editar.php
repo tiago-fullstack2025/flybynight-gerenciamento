@@ -1,3 +1,12 @@
+<?php
+require_once "../src/fornecedor_crud.php";
+
+// Pegando da url o valor do parâmetro chamado id
+$id = $_GET['id'];
+
+// Chamamos a função, passando dados de conexão e o id do fornecedor a ser buscado
+$fornecedor = buscarFornecedorPorId($conexao, $id);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,7 +21,7 @@
     <form action="" method="post">
         <div>
             <label for="nome">Nome:</label>
-            <input type="text" name="nome" id="nome" required>
+            <input value="<?=$fornecedor['nome']?>" type="text" name="nome" id="nome" required>
         </div>
         <button type="submit">Atualizar</button>
     </form>
