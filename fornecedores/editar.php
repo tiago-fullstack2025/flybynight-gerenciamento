@@ -6,6 +6,18 @@ $id = $_GET['id'];
 
 // Chamamos a função, passando dados de conexão e o id do fornecedor a ser buscado
 $fornecedor = buscarFornecedorPorId($conexao, $id);
+
+
+if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
+    $nome = $_POST['nome'];
+    atualizarFornecedor($conexao, $nome, $id);
+    
+    // Após redirecionar usando header()...
+    header("location:listar.php");
+    
+    // ... sempre encerre/interrompa o script (evitando erros/execuções adicionais)
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -22,7 +34,7 @@ $fornecedor = buscarFornecedorPorId($conexao, $id);
         <!-- Sempre coloque o código/id do registro de forma oculta
         no formulário. -->
         <input type="hidden" name="id" value="<?=$fornecedor['id']?>">
-        
+
         <div>
             <label for="nome">Nome:</label>
             <input value="<?=$fornecedor['nome']?>" type="text" name="nome" id="nome" required>
