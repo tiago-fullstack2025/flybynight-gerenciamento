@@ -65,3 +65,11 @@ function atualizarFornecedor($conexao, $nome, $id){
 
     $consulta->execute();
 }
+
+/* Recebe o id do fornecedor a ser excluído */
+function excluirFornecedor($conexao, $id){
+    $sql = "DELETE FROM fornecedores WHERE id = :id";
+    $consulta = $conexao->prepare($sql);
+    $consulta->bindValue(':id', $id);
+    $consulta->execute();
+}
