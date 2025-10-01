@@ -40,7 +40,9 @@ $fornecedores = buscarFornecedores($conexao);
                 <td> <?=$fornecedor['id']?> </td>
                 <td> <?=$fornecedor['nome']?> </td>
                 <td>
-                    <a href="editar.php">Editar</a>
+                    <!-- LINK DINÂMICO, ou seja, a url/endereço
+                    utiliza parâmetro(s) e valor(es) dinâmico(s) -->
+                    <a href="editar.php?id=<?=$fornecedor['id']?>">Editar</a>
                     <a href="">Excluir</a>
                 </td>
             </tr>
