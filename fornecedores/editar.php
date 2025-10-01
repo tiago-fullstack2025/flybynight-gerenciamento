@@ -19,6 +19,10 @@ $fornecedor = buscarFornecedorPorId($conexao, $id);
     <h1>Editar fornecedor</h1>
 
     <form action="" method="post">
+        <!-- Sempre coloque o código/id do registro de forma oculta
+        no formulário. -->
+        <input type="hidden" name="id" value="<?=$fornecedor['id']?>">
+        
         <div>
             <label for="nome">Nome:</label>
             <input value="<?=$fornecedor['nome']?>" type="text" name="nome" id="nome" required>
