@@ -5,9 +5,9 @@ require_once "../conecta.php";
 
 function buscarProdutos($conexao){
     $sql = "SELECT
-                produtos.id, produtos.nome,
+                produtos.id, produtos.nome AS nome_produto,
                 produtos.preco, produtos.quantidade,
-                fornecedores.nome
+                fornecedores.nome AS nome_fornecedor
             FROM produtos JOIN fornecedores
             ON fornecedores.id = produtos.fornecedor_id
             ORDER BY produtos.nome";
