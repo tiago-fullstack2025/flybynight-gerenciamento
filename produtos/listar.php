@@ -1,10 +1,6 @@
 <?php
 require_once "../src/produto_crud.php";
 $produtos = buscarProdutos($conexao);
-
-echo "<pre>";
-var_dump($produtos);
-echo "</pre>";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -30,18 +26,21 @@ echo "</pre>";
             <th>Ações</th>
         </tr>
 
+<?php foreach($produtos as $produto): ?>
             <tr>
-                <td>  </td>
-                <td>  </td>
-                <td>  </td>
-                <td>  </td>
+                <td> <?=$produto['nome_produto']?> </td>
+                <td> <?=$produto['preco']?> </td>
+                <td> <?=$produto['quantidade']?> </td>
+                <td> <?=$produto['nome_fornecedor']?> </td>
                 <td>
                     <a href="editar.php">Editar</a>
                     <a class="excluir" href="excluir.php">Excluir</a>
                 </td>
             </tr>
+<?php endforeach; ?>
 
     </table>
+
         
     <script src="../js/confirmar-exclusao.js"></script>
 </body>
