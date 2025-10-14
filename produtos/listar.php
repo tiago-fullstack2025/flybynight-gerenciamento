@@ -33,8 +33,8 @@ $produtos = buscarProdutos($conexao);
                 <td> <?=$produto['quantidade']?> </td>
                 <td> <?=$produto['nome_fornecedor']?> </td>
                 <td>
-                    <a href="editar.php">Editar</a>
-                    <a class="excluir" href="excluir.php">Excluir</a>
+                    <a href="editar.php?id=<?=$produto['id']?>">Editar</a>
+                    <a class="excluir" href="excluir.php?id=<?=$produto['id']?>">Excluir</a>
                 </td>
             </tr>
 <?php endforeach; ?>
