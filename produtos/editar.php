@@ -3,10 +3,21 @@ require_once "../src/fornecedor_crud.php";
 require_once "../src/produto_crud.php";
 
 $id = $_GET['id'];
-
 $produto = buscarProdutoPorId($conexao, $id);
-
 $fornecedores = buscarFornecedores($conexao);
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $nome = $_POST['nome'];
+    $descricao = $_POST['descricao'];
+    $preco = $_POST['preco'];
+    $quantidade = $_POST['quantidade'];
+    $fornecedor_id = $_POST['fornecedor']; // ATENÇÃO AQUI!
+
+    atualizarProduto($conexao, $id, $nome, $descricao, $preco, $quantidade, $fornecedor_id);
+
+    header("location:listar.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -57,7 +68,7 @@ $fornecedores = buscarFornecedores($conexao);
                      Se o ID do fornecedor aqui da lista de opções for IGUAL ao
                      fornecedor do produto que escolhemos editar, então faça com que fique
                      selecionado. Caso contrário, não faça nada. -->
-                     
+
                 <option value="<?=$fornecedor['id']?>"
                 <?= $fornecedor['id'] === $produto['fornecedor_id'] ? 'selected' : '' ?>
                 >
